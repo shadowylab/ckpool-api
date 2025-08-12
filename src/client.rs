@@ -4,6 +4,7 @@ use bitcoin::Address;
 use reqwest::{Client, Response};
 use url::Url;
 
+use crate::builder::CKPoolClientBuilder;
 use crate::error::Error;
 use crate::response::UserStats;
 
@@ -29,6 +30,12 @@ impl CKPoolClient {
     #[inline]
     pub fn new(url: Url) -> Self {
         Self::from_client(url, Client::new())
+    }
+
+    /// Construct a client builder
+    #[inline]
+    pub fn builder(url: Url) -> CKPoolClientBuilder {
+        CKPoolClientBuilder::new(url)
     }
 
     /// Construct new with a custom reqwest [`Client`].
