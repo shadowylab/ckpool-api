@@ -15,6 +15,16 @@ pub struct CKPoolClient {
 
 impl CKPoolClient {
     /// Construct a new CKPool client instance.
+    ///
+    /// # Example
+    ///
+    /// ```rust,no_run
+    /// use ckpool_api::prelude::*;
+    ///
+    /// let url: Url = Url::parse("https://solo.braiins.com").unwrap();
+    /// let client = CKPoolClient::new(url);
+    /// # let _client = client;
+    /// ```
     #[inline]
     pub fn new(url: Url) -> Self {
         Self::from_client(url, Client::new())
