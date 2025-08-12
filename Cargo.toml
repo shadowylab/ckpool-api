@@ -21,6 +21,7 @@ nativetls = ["reqwest/native-tls"]
 socks = ["reqwest/socks"]
 
 [dependencies]
+bitcoin = { version = "0.32", default-features = false, features = ["std", "serde"] }
 reqwest = { version = "0.12", default-features = false, features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 url = "2.5"

@@ -1,5 +1,6 @@
 //! Client
 
+use bitcoin::Address;
 use reqwest::{Client, Response};
 use url::Url;
 
@@ -37,8 +38,11 @@ impl CKPoolClient {
     }
 
     /// Get user stats.
-    pub async fn user_stats(&self, user: &str) -> Result<UserStats, Error> {
-        let url: Url = self.url.join("/users/")?.join(user)?;
+    pub async fn user_stats(&self, address: &Address) -> Result<UserStats, Error> {
+        let url: Url = self
+            .url
+            .join("/users/")?
+            .join(address.to_string().as_str())?;
         let response: Response = self.client.get(url).send().await?;
         Ok(response.json().await?)
     }
