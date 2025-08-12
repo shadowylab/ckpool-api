@@ -1,0 +1,13 @@
+[package]
+name = "ckpool-api"
+version = "0.1.0"
+edition = "2024"
+description = "A Rust client library for reading stats from CKPool."
+authors = ["Yuki Kishimoto <yukikishimoto@protonmail.com>"]
+homepage = "https://github.com/shadowylab/ckpool-api"
+repository = "https://github.com/shadowylab/ckpool-api.git"
+license = "MIT"
+readme = "README.md"
+keywords = ["bitcoin", "ckpool", "api"]
+
+[dependencies]
