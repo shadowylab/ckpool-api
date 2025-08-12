@@ -11,6 +11,8 @@ pub enum Error {
     Url(ParseError),
     /// Reqwest error
     Reqwest(reqwest::Error),
+    /// User not found
+    UserNotFound,
 }
 
 impl std::error::Error for Error {}
@@ -20,6 +22,7 @@ impl fmt::Display for Error {
         match self {
             Self::Url(e) => write!(f, "{e}"),
             Self::Reqwest(e) => write!(f, "{e}"),
+            Self::UserNotFound => write!(f, "User not found"),
         }
     }
 }

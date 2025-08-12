@@ -44,6 +44,13 @@ impl CKPoolClient {
             .join("/users/")?
             .join(address.to_string().as_str())?;
         let response: Response = self.client.get(url).send().await?;
-        Ok(response.json().await?)
+
+        match response.error_for_status() {
+            Ok(res) => Ok(res.json().await?),
+            Err(err) => match err.status() {
+                Some(reqwest::StatusCode::NOT_FOUND) => Err(Error::UserNotFound),
+                _ => Err(Error::from(err)),
+            },
+        }
     }
 }
