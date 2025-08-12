@@ -24,3 +24,9 @@ socks = ["reqwest/socks"]
 reqwest = { version = "0.12", default-features = false, features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 url = "2.5"
+
+[dev-dependencies]
+tokio = { version = "1.46", features = ["macros", "rt-multi-thread"] }
+
+[[example]]
+name = "client"
